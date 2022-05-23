@@ -9,7 +9,7 @@ func main() {
 	// manha.Exercicio2()
 	// manha.Exercicio3()
 	// manha.Exercicio4()
-	// tarde.Exercicio1()
+	tarde.Exercicio1()
 	// tarde.Exercicio2()
 	// tarde.Exercicio3()
 	tarde.Exercicio4()
