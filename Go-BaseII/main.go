@@ -1,7 +1,7 @@
 package main
 
 import (
-	manha "github.com/gobaseii/exercicios/manha"
+	tarde "github.com/gobaseii/exercicios/tarde"
 )
 
 func main() {
@@ -15,5 +15,8 @@ func main() {
 	//salarioC, _ := manha.Exercicio3("C", 162) //162
 	//fmt.Println("Exercicio 3:", "salario:", salarioC)
 	//manha.Exercicio4()
-	manha.Exercicio5()
+	//manha.Exercicio5()
+
+	tarde.Exercicio1()
+	tarde.Exercicio2()
 }
