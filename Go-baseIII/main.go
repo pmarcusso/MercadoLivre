@@ -1,9 +1,9 @@
 package main
 
-import (
-	manha "github.com/gobaseiii/exercicios/manha"
-)
+import "github.com/gobaseiii/exercicios/tarde"
 
 func main() {
-	manha.Exercicio1()
+	//manha.Exercicio1()
+	//tarde.Exercicio1()
+	tarde.Exercicio2()
 }
