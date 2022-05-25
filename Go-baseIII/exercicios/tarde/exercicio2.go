@@ -56,6 +56,10 @@ func adicionarProduto(usuario *Usuario, produtos ...Produto) {
 	fmt.Printf("Usuario %+v adicionou os produtos %+v\n", usuario.Nome, produtos)
 }
 
+func removerProdutos(usuario *Usuario) {
+	usuario.Produto = nil
+}
+
 func Exercicio2() {
 	usuario1 := Usuario{"Paulo Henrique", "Marcusso", 30, "meli@meli", "senha", nil}
 	fmt.Println("Usuario", usuario1)
@@ -63,4 +67,7 @@ func Exercicio2() {
 	novoProduto2 := novoProduto("Jumanji", 700.0, 32)
 	adicionarProduto(&usuario1, novoProduto1, novoProduto2)
 	fmt.Println(usuario1)
+
+	removerProdutos(&usuario1)
+	fmt.Println("Removendo produtos do usuario", usuario1)
 }
