@@ -38,12 +38,52 @@ func Exercicio4() {
 	variave2 := rand.Perm(1000)
 	variave3 := rand.Perm(10000)
 
-	var funcoes []func([]int, chan<- string)
-	funcoes = append(funcoes, SelectionSort, InsertionSort)
+	var functions []func([]int, chan<- string)
+	functions = append(functions, SelectionSort, InsertionSort)
 
-	sortList(variavel, funcoes)
-	sortList(variave2, funcoes)
-	sortList(variave3, funcoes)
+	sortList(variavel, functions)
+	sortList(variave2, functions)
+	sortList(variave3, functions)
+}
+
+func InsertionSort(array []int, c chan<- string) {
+	start := time.Now()
+
+	var tamanho = len(array)
+	for i := 1; i < tamanho; i++ {
+		j := i
+		for j > 0 {
+			if array[j-1] > array[j] {
+				array[j-1], array[j] = array[j], array[j-1]
+			}
+			j = j - 1
+		}
+	}
+
+	timeExecution := time.Since(start).Seconds()
+	result := fmt.Sprintf("Insertion Sort: Quantidade de números %d inteiros: %.6fs",
+		tamanho, timeExecution)
+	c <- result
+}
+
+func SelectionSort(array []int, c chan<- string) {
+	start := time.Now()
+
+	var tamanho = len(array)
+	for i := 0; i < tamanho; i++ {
+		var minIdx = i
+		for j := i; j < tamanho; j++ {
+			if array[j] < array[minIdx] {
+				minIdx = j
+			}
+		}
+		array[i], array[minIdx] = array[minIdx], array[i]
+	}
+
+	timeExecution := time.Since(start).Seconds()
+	result := fmt.Sprintf("Selection Sort: Quantidade de números %d inteiros: %.6fs",
+		tamanho, timeExecution)
+	c <- result
 }
 
 func sortList(array []int, funcoes []func([]int, chan<- string)) {
@@ -57,44 +97,4 @@ func sortList(array []int, funcoes []func([]int, chan<- string)) {
 		fmt.Println(<-c)
 	}
 	fmt.Println()
-}
-
-func InsertionSort(array []int, c chan<- string) {
-	t := time.Now()
-
-	var tamanho = len(array)
-	for i := 1; i < tamanho; i++ {
-		j := i
-		for j > 0 {
-			if array[j-1] > array[j] {
-				array[j-1], array[j] = array[j], array[j-1]
-			}
-			j = j - 1
-		}
-	}
-
-	t0 := time.Since(t).Seconds()
-	result := fmt.Sprintf("Tempo de execução do Insertion Sort no array de %d inteiros: %.6fs",
-		tamanho, t0)
-	c <- result
-}
-
-func SelectionSort(array []int, c chan<- string) {
-	t := time.Now()
-
-	var tamanho = len(array)
-	for i := 0; i < tamanho; i++ {
-		var minIdx = i
-		for j := i; j < tamanho; j++ {
-			if array[j] < array[minIdx] {
-				minIdx = j
-			}
-		}
-		array[i], array[minIdx] = array[minIdx], array[i]
-	}
-
-	t0 := time.Since(t).Seconds()
-	result := fmt.Sprintf("Tempo de execução do Selection Sort no array de %d inteiros: %.6fs",
-		tamanho, t0)
-	c <- result
 }
