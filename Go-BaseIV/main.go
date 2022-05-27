@@ -1,7 +1,7 @@
 package main
 
 import (
-	manha "github.com/gobaseiv/manha"
+	tarde "github.com/gobaseiv/tarde"
 )
 
 func main() {
@@ -24,5 +24,7 @@ func main() {
 	//}
 	//fmt.Println(imposto3)
 
-	manha.Exercicio4()
+	//manha.Exercicio4()
+	tarde.Exercicio2()
+
 }

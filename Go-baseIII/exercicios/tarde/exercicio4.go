@@ -89,8 +89,8 @@ func SelectionSort(array []int, c chan<- string) {
 func sortList(array []int, funcoes []func([]int, chan<- string)) {
 	c := make(chan string)
 
-	for _, Sort := range funcoes {
-		go Sort(array, c)
+	for _, funcao := range funcoes {
+		go funcao(array, c)
 	}
 
 	for i := 0; i < 2; i++ {
